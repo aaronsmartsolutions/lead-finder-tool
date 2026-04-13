@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lead Finder Tool - Aaron Smart Solutions</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      color: #38bdf8;
+    }
+    input, select {
+      padding: 10px;
+      margin: 10px;
+      width: 250px;
+      border-radius: 5px;
+      border: none;
+    }
+    button {
+      padding: 12px 20px;
+      background: #38bdf8;
+      border: none;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .output {
+      margin-top: 20px;
+      background: #1e293b;
+      padding: 15px;
+      border-radius: 10px;
+    }
+    .copy-btn {
+      margin-top: 10px;
+      background: #22c55e;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<h1>🚀 Free Lead Finder Tool</h1>
+<p>Find clients & generate outreach messages instantly</p>
+
+<input id="niche" placeholder="Enter Niche (e.g. Real Estate)">
+<br>
+<input id="location" placeholder="Enter Location (e.g. Dubai)">
+<br>
+
+<select id="service">
+  <option>Social Media Marketing</option>
+  <option>Website Design</option>
+  <option>SEO Services</option>
+  <option>Video Editing</option>
+  <option>Lead Generation</option>
+  <option>Facebook Ads</option>
+</select>
+<br>
+
+<button onclick="generate()">Generate Leads & Messages</button>
+
+<div class="output" id="result" style="display:none;"></div>
+
+<script>
+function generate() {
+  let niche = document.getElementById("niche").value;
+  let location = document.getElementById("location").value;
+  let service = document.getElementById("service").value;
+
+  if (!niche || !location) {
+    alert("Please fill all fields");
+    return;
+  }
+
+  let msg1 = `Hi, I help ${niche} businesses in ${location} grow using ${service}. I came across your business and thought this could help you get more clients.`;
+
+  let msg2 = `Hello, I work with ${niche} businesses in ${location} to improve results through ${service}. Would you be open to a quick discussion?`;
+
+  let msg3 = `Hey! I noticed your ${niche} business in ${location}. I specialize in ${service} and can help you get more leads quickly.`;
+
+  let searchLink = `https://www.google.com/maps/search/${niche}+in+${location}`;
+
+  document.getElementById("result").style.display = "block";
+  document.getElementById("result").innerHTML = `
+    <h3>📍 Find Leads:</h3>
+    <a href="${searchLink}" target="_blank">
+      <button>Open Google Maps Leads</button>
+    </a>
+
+    <h3>✉️ Messages:</h3>
+
+    <p>${msg1}</p>
+    <button class="copy-btn" onclick="copyText(\`${msg1}\`)">Copy</button>
+
+    <p>${msg2}</p>
+    <button class="copy-btn" onclick="copyText(\`${msg2}\`)">Copy</button>
+
+    <p>${msg3}</p>
+    <button class="copy-btn" onclick="copyText(\`${msg3}\`)">Copy</button>
+  `;
+}
+
+function copyText(text) {
+  navigator.clipboard.writeText(text);
+  alert("Copied!");
+}
+</script>
+
+</body>
+</html>
