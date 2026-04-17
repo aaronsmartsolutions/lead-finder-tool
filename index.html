@@ -50,11 +50,48 @@ Generate Leads & Sheet
 <script>
 function generateLeads() {
 
-let niche = document.getElementById("niche").value;
-let location = document.getElementById("location").value;
+let output = document.getElementById("output");
+output.innerHTML = "<p>⏳ Generating leads...</p>";
+
+let niche = document.getElementById("niche").value.trim();
+let location = document.getElementById("location").value.trim();
 let goal = document.getElementById("goal").value;
 
+if (!niche || !location) {
+output.innerHTML = "<p style='color:red;'>⚠️ Please enter niche and location</p>";
+return;
+}
+
+setTimeout(() => {
+
 let mapsLink = `https://www.google.com/maps/search/${niche}+in+${location}`;
+
+let message = `Hi, I help ${niche} businesses in ${location} grow using ${goal}. Let's work together!`;
+
+let sheet = `
+<table border="1" style="margin:auto; color:white;">
+<tr><th>Business</th><th>Phone</th><th>Email</th></tr>
+<tr><td>${niche} Business 1</td><td>+123456789</td><td>contact1@gmail.com</td></tr>
+<tr><td>${niche} Business 2</td><td>+987654321</td><td>contact2@gmail.com</td></tr>
+</table>
+`;
+
+output.innerHTML = `
+<h3>📍 Leads</h3>
+<a href="${mapsLink}" target="_blank" style="color:#38bdf8;">Open Google Maps</a>
+
+<h3>📩 Message</h3>
+<p>${message}</p>
+
+<h3>📊 Sheet</h3>
+${sheet}
+
+<br><br>
+<button onclick="downloadCSV()" style="padding:10px;">Download Sheet</button>
+`;
+
+}, 1000);
+}
 
 let message = `Hi, I help ${niche} businesses in ${location} grow using ${goal}. Let's work together!`;
 
