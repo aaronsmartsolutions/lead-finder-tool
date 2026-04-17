@@ -1,115 +1,93 @@
 <!DOCTYPE html>
-
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Lead Finder Tool - Aaron Smart Solutions</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
-    h1 {
-      color: #38bdf8;
-    }
-    input, select {
-      padding: 10px;
-      margin: 10px;
-      width: 250px;
-      border-radius: 5px;
-      border: none;
-    }
-    button {
-      padding: 12px 20px;
-      background: #38bdf8;
-      border: none;
-      color: black;
-      font-weight: bold;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-    .output {
-      margin-top: 20px;
-      background: #1e293b;
-      padding: 15px;
-      border-radius: 10px;
-    }
-    .copy-btn {
-      margin-top: 10px;
-      background: #22c55e;
-      color: white;
-    }
-  </style>
-</head>
-<body>
+<title>Free Lead Finder Tool</title>
 
-<h1>🚀 Free Lead Finder Tool</h1>
+<!-- Popunder Ad -->
+<script src="https://pl29141385.profitablecpmratenetwork.com/54/db/51/54db519378cf12979089f1cb3c3c0b8f.js"></script>
+
+</head>
+
+<body style="background:#0f172a; color:white; text-align:center; font-family:Arial; padding:40px;">
+
+<h1 style="color:#38bdf8;">🚀 Free Lead Finder Tool</h1>
 <p>Find clients & generate outreach messages instantly</p>
 
-<input id="niche" placeholder="Enter Niche (e.g. Real Estate)">
-<br>
-<input id="location" placeholder="Enter Location (e.g. Dubai)">
-<br>
+<input id="niche" placeholder="Enter Niche (e.g. Real Estate)" style="padding:10px; width:250px;"><br><br>
+<input id="location" placeholder="Enter Location (e.g. Dubai)" style="padding:10px; width:250px;"><br><br>
 
-<select id="service">
-  <option>Social Media Marketing</option>
-  <option>Website Design</option>
-  <option>SEO Services</option>
-  <option>Video Editing</option>
-  <option>Lead Generation</option>
-  <option>Facebook Ads</option>
+<select id="goal" style="padding:10px; width:270px;">
+<option>Lead Generation</option>
+<option>Offer Marketing Services</option>
+<option>Sell Website</option>
+<option>Video Editing Service</option>
 </select>
-<br>
 
-<button onclick="generate()">Generate Leads & Messages</button>
+<br><br>
 
-<div class="output" id="result" style="display:none;"></div>
+<button onclick="generateLeads()" style="padding:12px 25px; background:#38bdf8; border:none; cursor:pointer;">
+Generate Leads & Sheet
+</button>
+
+<br><br>
+
+<!-- Banner Ad -->
+<script>
+  atOptions = {
+    'key' : '4d88272a1797ea441b327470a9b3d9c1',
+    'format' : 'iframe',
+    'height' : 250,
+    'width' : 300,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/4d88272a1797ea441b327470a9b3d9c1/invoke.js"></script>
+
+<br><br>
+
+<div id="output"></div>
 
 <script>
-function generate() {
-  let niche = document.getElementById("niche").value;
-  let location = document.getElementById("location").value;
-  let service = document.getElementById("service").value;
+function generateLeads() {
 
-  if (!niche || !location) {
-    alert("Please fill all fields");
-    return;
-  }
+let niche = document.getElementById("niche").value;
+let location = document.getElementById("location").value;
+let goal = document.getElementById("goal").value;
 
-  let msg1 = `Hi, I help ${niche} businesses in ${location} grow using ${service}. I came across your business and thought this could help you get more clients.`;
+let mapsLink = `https://www.google.com/maps/search/${niche}+in+${location}`;
 
-  let msg2 = `Hello, I work with ${niche} businesses in ${location} to improve results through ${service}. Would you be open to a quick discussion?`;
+let message = `Hi, I help ${niche} businesses in ${location} grow using ${goal}. Let's work together!`;
 
-  let msg3 = `Hey! I noticed your ${niche} business in ${location}. I specialize in ${service} and can help you get more leads quickly.`;
+let sheet = `
+<table border="1" style="margin:auto; color:white;">
+<tr><th>Business</th><th>Phone</th><th>Email</th></tr>
+<tr><td>Example Business 1</td><td>+123456789</td><td>email1@gmail.com</td></tr>
+<tr><td>Example Business 2</td><td>+987654321</td><td>email2@gmail.com</td></tr>
+</table>
+`;
 
-  let searchLink = `https://www.google.com/maps/search/${niche}+in+${location}`;
+document.getElementById("output").innerHTML = `
+<h3>📍 Leads</h3>
+<a href="${mapsLink}" target="_blank" style="color:#38bdf8;">Open Google Maps</a>
 
-  document.getElementById("result").style.display = "block";
-  document.getElementById("result").innerHTML = `
-    <h3>📍 Find Leads:</h3>
-    <a href="${searchLink}" target="_blank">
-      <button>Open Google Maps Leads</button>
-    </a>
+<h3>📩 Message</h3>
+<p>${message}</p>
 
-    <h3>✉️ Messages:</h3>
+<h3>📊 Sample Sheet</h3>
+${sheet}
 
-    <p>${msg1}</p>
-    <button class="copy-btn" onclick="copyText(\`${msg1}\`)">Copy</button>
-
-    <p>${msg2}</p>
-    <button class="copy-btn" onclick="copyText(\`${msg2}\`)">Copy</button>
-
-    <p>${msg3}</p>
-    <button class="copy-btn" onclick="copyText(\`${msg3}\`)">Copy</button>
-  `;
+<br>
+<button onclick="downloadCSV()" style="padding:10px;">Download Sheet</button>
+`;
 }
 
-function copyText(text) {
-  navigator.clipboard.writeText(text);
-  alert("Copied!");
+function downloadCSV() {
+let csv = "Business,Phone,Email\nExample 1,123456,email@gmail.com";
+let blob = new Blob([csv], { type: 'text/csv' });
+let link = document.createElement("a");
+link.href = URL.createObjectURL(blob);
+link.download = "leads.csv";
+link.click();
 }
 </script>
 
