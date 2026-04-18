@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Free Lead Finder Tool</title>
+
+<!-- Popunder Ad -->
+<script src="https://pl29141385.profitablecpmratenetwork.com/54/db/51/54db519378cf12979089f1cb3c3c0b8f.js"></script>
+
+</head>
+
+<body style="background:#0f172a; color:white; text-align:center; font-family:Arial; padding:40px;">
+
+<h1 style="color:#38bdf8;">🚀 Free Lead Finder Tool</h1>
+
+<p>Find clients & generate outreach messages instantly</p>
+
+<br>
+
+<input id="niche" placeholder="Enter Niche" style="padding:10px; width:250px;"><br><br>
+<input id="location" placeholder="Enter Location" style="padding:10px; width:250px;"><br><br>
+
+<select id="goal" style="padding:10px; width:270px;">
+<option>Lead Generation</option>
+<option>Offer Marketing Services</option>
+<option>Sell Website</option>
+<option>Video Editing Service</option>
+</select>
+
+<br><br>
+
+<button onclick="generateLeads()" style="padding:12px 25px; background:#38bdf8; border:none; cursor:pointer;">
+Generate Leads & Sheet
+</button>
+
+<br><br>
+
+<!-- Banner Ad -->
+<script>
+  atOptions = {
+    'key' : '4d88272a1797ea441b327470a9b3d9c1',
+    'format' : 'iframe',
+    'height' : 250,
+    'width' : 300,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/4d88272a1797ea441b327470a9b3d9c1/invoke.js"></script>
+
+<br><br>
+
+<div id="output"></div>
+
+<script>
+function generateLeads() {
+
+let output = document.getElementById("output");
+output.innerHTML = "⏳ Generating leads...";
+
+let niche = document.getElementById("niche").value.trim();
+let location = document.getElementById("location").value.trim();
+let goal = document.getElementById("goal").value;
+
+if (!niche || !location) {
+output.innerHTML = "<p style='color:red;'>⚠️ Please fill all fields</p>";
+return;
+}
+
+setTimeout(() => {
+
+let mapsLink = `https://www.google.com/maps/search/${niche}+in+${location}`;
+
+let message = `Hi, I help ${niche} businesses in ${location} grow using ${goal}. Let’s work together.`;
+
+let csvData = `Business,Link,Message\n${niche} Business,${mapsLink},"${message}"`;
+
+output.innerHTML = `
+<h2>📍 Leads</h2>
+<a target="_blank" href="${mapsLink}" style="color:#38bdf8;">
+Open Google Maps Results
+</a>
+
+<h2>📩 Message</h2>
+<p>${message}</p>
+
+<br>
+
+<button onclick="downloadCSV(\`${csvData}\`)" style="padding:10px;">
+Download Sheet
+</button>
+`;
+
+}, 1000);
+}
+
+function downloadCSV(data) {
+let blob = new Blob([data], { type: 'text/csv' });
+let link = document.createElement("a");
+link.href = URL.createObjectURL(blob);
+link.download = "leads.csv";
+link.click();
+}
+</script>
+
+</body>
+</html>
